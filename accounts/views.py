@@ -13,7 +13,7 @@ from django.urls import reverse_lazy
 from .forms import SignupForm
 from .models import User
 
-# login = LoginView.as_view(template_name="accounts/login_form.html")
+login = LoginView.as_view(template_name="accounts/login_form.html")
 
 
 # def logout(request):
@@ -25,9 +25,7 @@ def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            form.save()
-        #     signed_user = form.save()
-
+            signed_user = form.save()
         #     auth_login(request, signed_user)
             messages.success(request, "Congratulation!")
         #     signed_user.send_welcome_email()  # FIXME: Celery로 처리하는 것을 추천.
